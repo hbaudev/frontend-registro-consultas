@@ -1,5 +1,5 @@
 import { apiFetch } from "../../../shared/lib/api";
-import type { PacientesPage } from "../types/pacientes/index";
+import type { PacienteExpediente, PacientesPage } from "../types/pacientes/index";
 import type { ExpedientePaciente } from "../types/expediente/index";
 
 export interface PacientesQuery {
@@ -36,4 +36,19 @@ export async function getPacienteExpedienteByInss(
     { signal },
   );
   return result.expedientes ?? [];
+}
+
+export interface PacienteExpedienteResponse {
+  paciente: PacienteExpediente[];
+}
+
+export async function getPacienteCompletoByInss(
+  numeroInss: number,
+  signal?: AbortSignal,
+): Promise<PacienteExpediente[]> {
+  const result = await apiFetch<PacienteExpedienteResponse>(
+    `/api/pacientes/obtener-paciente-completo/${encodeURIComponent(numeroInss)}`,
+    { signal },
+  );
+  return result.paciente;
 }

@@ -23,3 +23,18 @@ export interface PacientesPage {
         totalPaginas: number;
     };
 }
+
+export interface PacienteExpediente {
+    numeroInss: number;
+    numeroCedula: string | null;
+    nombres: string;
+    apellidos: string;
+    empresa: string | null;
+    codigoTipoSeguro: string;
+    tipoSeguro: string;
+    numeroExpediente: number | null;
+    pacienteEspecial: boolean;
+    autorizadoGerencia: boolean;
+    fechaNacimiento: Date | string | null;
+    fechaCreacionExpediente: Date | string;
+}
