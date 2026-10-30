@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { CssBaseline, createTheme, ThemeProvider } from "@mui/material";
 import { AuthProvider } from "../features/auth/providers/AuthProvider";
+import { NotificationProvider } from "../shared/providers/NotificationProvider";
 import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 import SessionRenewalPrompt from "../features/auth/components/SessionRenewalPrompt";
 import MainLayout from "../shared/layouts/MainLayout";
@@ -15,6 +16,7 @@ import Turnos from "../features/turnos/pages/Turnos";
 import Medicos from "../features/medicos/pages/Medicos";
 import ProgramacionConsultas from "../features/programacion/pages/Programacion";
 import Consultorios from "../features/consultorios/pages/Consultorios";
+import RegistrarConsulta from "../features/consultas/pages/RegistrarConsulta";
 
 const theme = createTheme({
   palette: { mode: "light", primary: { main: "#1976d2" } },
@@ -25,6 +27,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <NotificationProvider>
       <AuthProvider>
         <BrowserRouter>
           <Routes>
@@ -36,6 +39,7 @@ export default function App() {
                   element={<Navigate to="/consultas" replace />}
                 />
                 <Route path="/consultas" element={<Consultas />} />
+                <Route path="/registrar-consulta/paciente/:inss" element={<RegistrarConsulta />} />
                 <Route path="/pacientes" element={<Pacientes />} />
                 <Route path="/personal-enfermeria" element={<Personal />} />
                 <Route path="/personal-medico" element={<Medicos />} />
@@ -53,6 +57,7 @@ export default function App() {
           <SessionRenewalPrompt />
         </BrowserRouter>
       </AuthProvider>
+      </NotificationProvider>
     </ThemeProvider>
   );
 }
