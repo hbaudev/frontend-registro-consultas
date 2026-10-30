@@ -1,4 +1,5 @@
 export interface AfiliadoInss {
+  numeroInss: number;
   NumeroINSS: string;
   PrimerNombre: string | null;
   SegundoNombre: string | null;
