@@ -15,7 +15,7 @@ interface TiposAfiliadosResponse {
   tiposAfiliados: TipoAfiliado[];
 }
 
-export async function getPerCapita(numeroInss: string): Promise<AfiliadoInss> {
+export async function getPerCapita(numeroInss: number): Promise<AfiliadoInss> {
   const response = await apiFetch<AfiliadoResponse>(
     `/api/ipss/${encodeURIComponent(numeroInss)}`,
   );
