@@ -8,6 +8,7 @@ import { EspecialidadesProvider } from "../../features/especialidades/providers/
 import { PacientesProvider } from "../../features/pacientes/providers/PacientesProvider";
 import { MedicosProvider } from "../../features/medicos/providers/MedicosProvider";
 import { ConsultoriosProvider } from "../../features/consultorios/providers/ConsultoriosProvider";
+import { ProgramacionProvider } from "../../features/programacion/providers/ProgramacionProvider";
 
 export default function MainLayout() {
   const [mobileNavigationOpen, setMobileNavigationOpen] = useState(false);
@@ -18,35 +19,37 @@ export default function MainLayout() {
         <PacientesProvider>
           <MedicosProvider>
             <ConsultoriosProvider>
-              <Box sx={{ minHeight: "100dvh", display: "flex", width: "100%" }}>
-                <MainSidebar
-                  mobileOpen={mobileNavigationOpen}
-                  onMobileClose={() => setMobileNavigationOpen(false)}
-                />
-
-                <Box
-                  sx={{
-                    flex: 1,
-                    minWidth: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <MainAppBar onOpenNavigation={() => setMobileNavigationOpen(true)} />
+              <ProgramacionProvider>
+                <Box sx={{ minHeight: "100dvh", display: "flex", width: "100%" }}>
+                  <MainSidebar
+                    mobileOpen={mobileNavigationOpen}
+                    onMobileClose={() => setMobileNavigationOpen(false)}
+                  />
 
                   <Box
-                    component="main"
                     sx={{
                       flex: 1,
                       minWidth: 0,
-                      p: { xs: 1.5, sm: 2.5 },
-                      bgcolor: "grey.50",
+                      display: "flex",
+                      flexDirection: "column",
                     }}
                   >
-                    <Outlet />
+                    <MainAppBar onOpenNavigation={() => setMobileNavigationOpen(true)} />
+
+                    <Box
+                      component="main"
+                      sx={{
+                        flex: 1,
+                        minWidth: 0,
+                        p: { xs: 1.5, sm: 2.5 },
+                        bgcolor: "grey.50",
+                      }}
+                    >
+                      <Outlet />
+                    </Box>
                   </Box>
                 </Box>
-              </Box>
+              </ProgramacionProvider>
             </ConsultoriosProvider>
           </MedicosProvider>
         </PacientesProvider>
