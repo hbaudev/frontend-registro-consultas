@@ -11,16 +11,16 @@ import PacientesActionMenu from "./PacientesActionMenu";
 interface PacientesTableProps {
   pacientes: Paciente[];
   loading: boolean;
-  onView?: (paciente: Paciente) => void;
   onViewExpediente?: (paciente: Paciente) => void;
   onEdit?: (paciente: Paciente) => void;
   onDelete?: (paciente: Paciente) => void;
+  onRegister?: (paciente: Paciente) => void;
 }
 
 export default function PacientesTable({
   pacientes,
   loading,
-  onView,
+  onRegister,
   onViewExpediente,
   onEdit,
   onDelete,
@@ -80,9 +80,10 @@ export default function PacientesTable({
     renderRowActions: ({ row }) => (
       <PacientesActionMenu
         paciente={row.original}
-        onView={onViewExpediente ?? onView}
+        onView={onViewExpediente}
         onEdit={onEdit}
         onDelete={onDelete}
+        onRegister={onRegister}
       />
     ),
     enablePagination: false,

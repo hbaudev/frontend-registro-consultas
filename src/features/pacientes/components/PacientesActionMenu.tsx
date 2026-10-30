@@ -11,10 +11,12 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutlined";
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import type { Paciente } from "../types/pacientes/index";
 
 export interface PacientesActionMenuProps {
   paciente: Paciente;
+  onRegister?: (paciente: Paciente) => void;
   onView?: (paciente: Paciente) => void;
   onEdit?: (paciente: Paciente) => void;
   onDelete?: (paciente: Paciente) => void;
@@ -22,6 +24,7 @@ export interface PacientesActionMenuProps {
 
 export default function PacientesActionMenu({
   paciente,
+  onRegister,
   onView,
   onEdit,
   onDelete,
@@ -68,6 +71,13 @@ export default function PacientesActionMenu({
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
+        <MenuItem onClick={() => handleAction(onRegister)}>
+          <ListItemIcon>
+            <LocalHospitalIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Registrar Consulta</ListItemText>
+        </MenuItem>
+
         <MenuItem onClick={() => handleAction(onView)}>
           <ListItemIcon>
             <VisibilityOutlinedIcon fontSize="small" />
