@@ -3,6 +3,9 @@ export interface Programacion {
   fecha: Date | string;
   jornada: "AM" | "PM";
   limitePacientes: number;
+  cuposOcupados?: number;
+  cuposDisponibles?: number;
+  estaLleno?: boolean;
   codigoMinsaMedico: string;
   nombreMedico: string;
   apellidoMedico: string | null;
