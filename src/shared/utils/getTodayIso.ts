@@ -1,0 +1,11 @@
+/**
+ * Retorna la fecha actual en formato ISO
+ * @returns string
+ */
+export function getTodayIso(): string {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+}
